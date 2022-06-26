@@ -1,1 +1,1 @@
-# github-user
+# Github User
