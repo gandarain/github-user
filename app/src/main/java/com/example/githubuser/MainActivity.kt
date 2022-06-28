@@ -1,9 +1,9 @@
 package com.example.githubuser
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,12 +25,25 @@ class MainActivity : AppCompatActivity() {
 
     private val listUser: ArrayList<User>
         get() {
+            val username = resources.getStringArray(R.array.username)
             val name = resources.getStringArray(R.array.name)
+            val location = resources.getStringArray(R.array.location)
+            val repository = resources.getStringArray(R.array.repository)
             val company = resources.getStringArray(R.array.company)
+            val followers = resources.getStringArray(R.array.followers)
+            val following = resources.getStringArray(R.array.following)
             val avatar = resources.obtainTypedArray(R.array.avatar)
             val listUser = ArrayList<User>()
             for (i in name.indices) {
-                val user = User(name[i], company[i], avatar.getResourceId(i, -1))
+                val user = User(
+                    username[i],
+                    name[i],
+                    location[i],
+                    repository[i],
+                    company[i],
+                    followers[i],
+                    following[i],
+                    avatar.getResourceId(i, -1))
                 listUser.add(user)
             }
             return listUser
@@ -53,6 +66,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSelectedUser(user: User) {
-        Toast.makeText(this, "Kamu memilih " + user.name, Toast.LENGTH_SHORT).show()
+        val moveWithObjectIntent = Intent(this@MainActivity, UserDetailActivity::class.java)
+        moveWithObjectIntent.putExtra(UserDetailActivity.USER, user)
+        startActivity(moveWithObjectIntent)
     }
 }

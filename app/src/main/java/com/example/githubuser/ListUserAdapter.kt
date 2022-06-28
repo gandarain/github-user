@@ -19,6 +19,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adap
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
         var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
         var tvCompany: TextView = itemView.findViewById(R.id.tv_item_company)
+        var tvUsername: TextView = itemView.findViewById(R.id.tv_item_username)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -27,13 +28,14 @@ class ListUserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, company, avatar) = listUser[position]
+        val user: User = listUser[position]
         Glide.with(holder.itemView.context)
-            .load(avatar)
+            .load(user.avatar)
             .circleCrop()
             .into(holder.imgPhoto)
-        holder.tvName.text = name
-        holder.tvCompany.text = company
+        holder.tvName.text = user.name
+        holder.tvCompany.text = user.company
+        holder.tvUsername.text = user.username
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listUser[holder.adapterPosition]) }
     }
 
