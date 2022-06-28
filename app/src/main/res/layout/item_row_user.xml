@@ -21,22 +21,20 @@
             android:id="@+id/img_item_photo"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars"/>
 
         <TextView
             android:id="@+id/tv_item_name"
+            android:layout_marginStart="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@id/img_item_photo"
             android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_photo"
             tools:text="Full Name"/>
 
@@ -44,32 +42,24 @@
             android:id="@+id/tv_item_username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center_vertical"
-            android:ellipsize="end"
             android:textSize="12sp"
             android:textColor="@color/grey"
-            card_view:layout_constraintBottom_toBottomOf="@+id/img_item_photo"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_name"
+            android:layout_marginTop="5dp"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_name"
-            card_view:layout_constraintVertical_bias="0.0"
             tools:text="Username"/>
 
         <TextView
             android:id="@+id/tv_item_company"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center_vertical"
-            android:ellipsize="end"
             android:textSize="15sp"
             android:textColor="@color/black"
-            card_view:layout_constraintBottom_toBottomOf="@+id/img_item_photo"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_username"
+            android:layout_marginTop="5dp"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_username"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_username"
-            card_view:layout_constraintVertical_bias="0.0"
             tools:text="Company"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

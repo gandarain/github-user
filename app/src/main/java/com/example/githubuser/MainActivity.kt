@@ -1,9 +1,9 @@
 package com.example.githubuser
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -66,6 +66,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSelectedUser(user: User) {
-        Toast.makeText(this, "Kamu memilih " + user.name, Toast.LENGTH_SHORT).show()
+        val moveWithObjectIntent = Intent(this@MainActivity, UserDetailActivity::class.java)
+        moveWithObjectIntent.putExtra(UserDetailActivity.USER, user)
+        startActivity(moveWithObjectIntent)
     }
 }
