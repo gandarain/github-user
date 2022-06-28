@@ -25,9 +25,17 @@ class UserDetailActivity : AppCompatActivity() {
         val tvName: TextView = findViewById(R.id.tv_name)
         val tvUsername: TextView = findViewById(R.id.tv_username)
         val ivAvatar: ImageView = findViewById(R.id.iv_avatar)
+        val tvCompany: TextView = findViewById(R.id.tv_company)
+        val tvRepository: TextView = findViewById(R.id.tv_repository)
+        val tvFollower: TextView = findViewById(R.id.tv_followers)
+        val tvLocation: TextView = findViewById(R.id.tv_location)
 
         tvUsername.text = user.username
         tvName.text = user.name
+        tvCompany.text = user.company
+        tvRepository.text = "${user.repository} repository"
+        tvFollower.text = "${user.followers} followers - ${user.following} following"
+        tvLocation.text = user.location
         Glide.with(this)
             .load(user.avatar)
             .circleCrop()
