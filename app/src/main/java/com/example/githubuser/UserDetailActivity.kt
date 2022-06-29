@@ -1,6 +1,6 @@
 package com.example.githubuser
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -24,6 +24,7 @@ class UserDetailActivity : AppCompatActivity() {
         setupToolbar()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupUserDetail() {
         val tvName: TextView = findViewById(R.id.tv_name)
         val tvUsername: TextView = findViewById(R.id.tv_username)
@@ -51,7 +52,10 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        finish()
+        val id = item.itemId
+        if (id == android.R.id.home) {
+            finish()
+        }
         return super.onOptionsItemSelected(item)
     }
 }
