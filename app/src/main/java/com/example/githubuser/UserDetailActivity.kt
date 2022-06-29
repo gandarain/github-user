@@ -1,7 +1,9 @@
 package com.example.githubuser
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -19,8 +21,10 @@ class UserDetailActivity : AppCompatActivity() {
         user = intent.getParcelableExtra<User>(USER) as User
 
         setupUserDetail()
+        setupToolbar()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupUserDetail() {
         val tvName: TextView = findViewById(R.id.tv_name)
         val tvUsername: TextView = findViewById(R.id.tv_username)
@@ -40,5 +44,18 @@ class UserDetailActivity : AppCompatActivity() {
             .load(user.avatar)
             .circleCrop()
             .into(ivAvatar)
+    }
+
+    private fun setupToolbar() {
+        title = "Detail User"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
