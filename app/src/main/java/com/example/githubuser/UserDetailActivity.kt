@@ -1,7 +1,9 @@
 package com.example.githubuser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -19,6 +21,7 @@ class UserDetailActivity : AppCompatActivity() {
         user = intent.getParcelableExtra<User>(USER) as User
 
         setupUserDetail()
+        setupToolbar()
     }
 
     private fun setupUserDetail() {
@@ -40,5 +43,15 @@ class UserDetailActivity : AppCompatActivity() {
             .load(user.avatar)
             .circleCrop()
             .into(ivAvatar)
+    }
+
+    private fun setupToolbar() {
+        title = "Detail User"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 }
