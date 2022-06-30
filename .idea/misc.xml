@@ -11,9 +11,10 @@
         <entry key="app/src/main/res/layout-v31/activity_main.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3762183235867446" />
         <entry key="app/src/main/res/layout/activity_user_detail.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/card_user_detail.xml" value="0.14175724637681159" />
+        <entry key="app/src/main/res/layout/card_user_detail.xml" value="0.335" />
         <entry key="app/src/main/res/layout/card_user_info.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/item_row_user.xml" value="0.45" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

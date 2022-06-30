@@ -28,11 +28,7 @@
         <TextView
             android:id="@+id/tv_item_name"
             android:layout_marginStart="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
+            style="@style/TvTitleUser"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_photo"
@@ -40,11 +36,7 @@
 
         <TextView
             android:id="@+id/tv_item_username"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="@color/grey"
-            android:layout_marginTop="5dp"
+            style="@style/TvUsername"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_name"
@@ -52,11 +44,7 @@
 
         <TextView
             android:id="@+id/tv_item_company"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="5dp"
+            style="@style/TvSubtitleUser"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_username"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_username"
