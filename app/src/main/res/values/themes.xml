@@ -19,4 +19,38 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
+    <style name="TvTitleUser">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TvSubtitleUser" parent="TvTitleUser">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="TvUsername" parent="TvSubtitleUser">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+    <style name="TvDetailUser">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TvCardDetailFullName" parent="TvTitleUser">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+    <style name="TvCardDetailUserName" parent="TvCardDetailFullName">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:color">@color/grey</item>
+    </style>
 </resources>

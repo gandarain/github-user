@@ -20,12 +20,7 @@
 
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            style="@style/TvCardDetailFullName"
             card_view:layout_constraintVertical_chainStyle="packed"
             card_view:layout_constraintTop_toTopOf="@+id/iv_avatar"
             card_view:layout_constraintBottom_toTopOf="@+id/tv_username"
@@ -35,11 +30,7 @@
 
         <TextView
             android:id="@+id/tv_username"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/grey"
-            android:layout_marginStart="10dp"
-            android:textSize="15sp"
+            style="@style/TvCardDetailUserName"
             card_view:layout_constraintStart_toEndOf="@+id/iv_avatar"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
