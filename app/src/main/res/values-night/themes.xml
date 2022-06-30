@@ -53,4 +53,9 @@
         <item name="android:textStyle">normal</item>
         <item name="android:color">@color/grey</item>
     </style>
+    <style name="GuidelineHorizontal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
 </resources>
