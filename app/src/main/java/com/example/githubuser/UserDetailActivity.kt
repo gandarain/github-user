@@ -1,6 +1,5 @@
 package com.example.githubuser
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,9 +8,6 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 
 class UserDetailActivity : AppCompatActivity() {
-    companion object {
-        const val USER = "user"
-    }
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +20,6 @@ class UserDetailActivity : AppCompatActivity() {
         setupToolbar()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setupUserDetail() {
         val tvName: TextView = findViewById(R.id.tv_name)
         val tvUsername: TextView = findViewById(R.id.tv_username)
@@ -37,8 +32,8 @@ class UserDetailActivity : AppCompatActivity() {
         tvUsername.text = user.username
         tvName.text = user.name
         tvCompany.text = user.company
-        tvRepository.text = "${user.repository} repository"
-        tvFollower.text = "${user.followers} followers - ${user.following} following"
+        tvRepository.text = StringBuilder().append(user.repository).append(" repository")
+        tvFollower.text = StringBuilder().append(user.followers).append(" followers").append("-").append(user.following).append(" following")
         tvLocation.text = user.location
         Glide.with(this)
             .load(user.avatar)
@@ -47,7 +42,7 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar() {
-        title = "Detail User"
+        title = R.string.title_detail_user.toString()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -57,5 +52,9 @@ class UserDetailActivity : AppCompatActivity() {
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        const val USER = "user"
     }
 }

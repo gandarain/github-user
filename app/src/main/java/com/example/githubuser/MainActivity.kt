@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                     avatar.getResourceId(i, -1))
                 listUser.add(user)
             }
+            avatar.recycle()
             return listUser
         }
 
