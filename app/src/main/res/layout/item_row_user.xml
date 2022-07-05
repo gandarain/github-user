@@ -18,6 +18,7 @@
         android:padding="15dp">
 
         <ImageView
+            android:contentDescription="@string/user_image"
             android:id="@+id/img_item_photo"
             android:layout_width="50dp"
             android:layout_height="50dp"
