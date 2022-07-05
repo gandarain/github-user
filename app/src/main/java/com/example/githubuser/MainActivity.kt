@@ -7,16 +7,20 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubuser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private lateinit var rvUser: RecyclerView
     private var list = ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        rvUser = findViewById(R.id.rv_users)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        rvUser = binding.rvUsers
         rvUser.setHasFixedSize(true)
 
         list.addAll(listUser)
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                     avatar.getResourceId(i, -1))
                 listUser.add(user)
             }
+            avatar.recycle()
             return listUser
         }
 

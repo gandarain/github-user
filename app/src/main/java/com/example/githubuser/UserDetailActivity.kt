@@ -1,22 +1,22 @@
 package com.example.githubuser
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.githubuser.databinding.ActivityUserDetailBinding
 
 class UserDetailActivity : AppCompatActivity() {
-    companion object {
-        const val USER = "user"
-    }
+    private lateinit var binding: ActivityUserDetailBinding
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_detail)
+
+        binding = ActivityUserDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         user = intent.getParcelableExtra<User>(USER) as User
 
@@ -24,21 +24,20 @@ class UserDetailActivity : AppCompatActivity() {
         setupToolbar()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setupUserDetail() {
-        val tvName: TextView = findViewById(R.id.tv_name)
-        val tvUsername: TextView = findViewById(R.id.tv_username)
-        val ivAvatar: ImageView = findViewById(R.id.iv_avatar)
-        val tvCompany: TextView = findViewById(R.id.tv_company)
-        val tvRepository: TextView = findViewById(R.id.tv_repository)
-        val tvFollower: TextView = findViewById(R.id.tv_followers)
-        val tvLocation: TextView = findViewById(R.id.tv_location)
+        val tvName: TextView = binding.cardUserInfo.tvName
+        val tvUsername: TextView = binding.cardUserInfo.tvUsername
+        val ivAvatar: ImageView = binding.cardUserInfo.ivAvatar
+        val tvCompany: TextView = binding.cardUserDetail.tvCompany
+        val tvRepository: TextView = binding.cardUserDetail.tvRepository
+        val tvFollower: TextView = binding.cardUserDetail.tvFollowers
+        val tvLocation: TextView = binding.cardUserDetail.tvLocation
 
         tvUsername.text = user.username
         tvName.text = user.name
         tvCompany.text = user.company
-        tvRepository.text = "${user.repository} repository"
-        tvFollower.text = "${user.followers} followers - ${user.following} following"
+        tvRepository.text = StringBuilder().append(user.repository).append(" repository")
+        tvFollower.text = StringBuilder().append(user.followers).append(" followers").append("-").append(user.following).append(" following")
         tvLocation.text = user.location
         Glide.with(this)
             .load(user.avatar)
@@ -47,7 +46,7 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar() {
-        title = "Detail User"
+        title = resources.getString(R.string.title_detail_user)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -57,5 +56,9 @@ class UserDetailActivity : AppCompatActivity() {
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        const val USER = "user"
     }
 }

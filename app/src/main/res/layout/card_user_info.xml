@@ -10,6 +10,7 @@
         android:padding="15dp">
 
         <ImageView
+            android:contentDescription="@string/user_image"
             android:id="@+id/iv_avatar"
             android:layout_width="70dp"
             android:layout_height="70dp"
