@@ -42,7 +42,7 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar() {
-        title = R.string.title_detail_user.toString()
+        title = resources.getString(R.string.title_detail_user)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
