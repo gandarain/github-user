@@ -6,13 +6,17 @@ import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.githubuser.databinding.ActivityUserDetailBinding
 
 class UserDetailActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityUserDetailBinding
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_detail)
+
+        binding = ActivityUserDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         user = intent.getParcelableExtra<User>(USER) as User
 
@@ -21,13 +25,13 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun setupUserDetail() {
-        val tvName: TextView = findViewById(R.id.tv_name)
-        val tvUsername: TextView = findViewById(R.id.tv_username)
-        val ivAvatar: ImageView = findViewById(R.id.iv_avatar)
-        val tvCompany: TextView = findViewById(R.id.tv_company)
-        val tvRepository: TextView = findViewById(R.id.tv_repository)
-        val tvFollower: TextView = findViewById(R.id.tv_followers)
-        val tvLocation: TextView = findViewById(R.id.tv_location)
+        val tvName: TextView = binding.cardUserInfo.tvName
+        val tvUsername: TextView = binding.cardUserInfo.tvUsername
+        val ivAvatar: ImageView = binding.cardUserInfo.ivAvatar
+        val tvCompany: TextView = binding.cardUserDetail.tvCompany
+        val tvRepository: TextView = binding.cardUserDetail.tvRepository
+        val tvFollower: TextView = binding.cardUserDetail.tvFollowers
+        val tvLocation: TextView = binding.cardUserDetail.tvLocation
 
         tvUsername.text = user.username
         tvName.text = user.name
