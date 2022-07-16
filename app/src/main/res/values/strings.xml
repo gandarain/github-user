@@ -2,6 +2,7 @@
     <string name="app_name">Github User</string>
     <string name="user_image">user image</string>
     <string name="title_detail_user">User Detail</string>
+    <string name="search_user">Username</string>
 
     <string-array name="username">
         <item>JakeWharton</item>
