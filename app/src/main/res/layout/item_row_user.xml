@@ -36,20 +36,12 @@
             tools:text="Full Name"/>
 
         <TextView
-            android:id="@+id/tv_item_username"
+            android:id="@+id/tv_item_score"
             style="@style/TvUsername"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_name"
             tools:text="Username"/>
-
-        <TextView
-            android:id="@+id/tv_item_company"
-            style="@style/TvSubtitleUser"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_item_username"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_username"
-            tools:text="Company"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

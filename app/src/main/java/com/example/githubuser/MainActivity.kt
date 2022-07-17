@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,20 +16,13 @@ import com.example.githubuser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var rvUser: RecyclerView
-    private var list = ArrayList<User>()
+    private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        rvUser = binding.rvUsers
-        rvUser.setHasFixedSize(true)
-
-        list.addAll(listUser)
-        showRecyclerList()
 
         binding.searchInput.edReview.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
@@ -40,42 +35,24 @@ class MainActivity : AppCompatActivity() {
                 Log.d("textChanged", s.toString())
             }
         })
-    }
 
-    private val listUser: ArrayList<User>
-        get() {
-            val username = resources.getStringArray(R.array.username)
-            val name = resources.getStringArray(R.array.name)
-            val location = resources.getStringArray(R.array.location)
-            val repository = resources.getStringArray(R.array.repository)
-            val company = resources.getStringArray(R.array.company)
-            val followers = resources.getStringArray(R.array.followers)
-            val following = resources.getStringArray(R.array.following)
-            val avatar = resources.obtainTypedArray(R.array.avatar)
-            val listUser = ArrayList<User>()
-            for (i in name.indices) {
-                val user = User(
-                    username[i],
-                    name[i],
-                    location[i],
-                    repository[i],
-                    company[i],
-                    followers[i],
-                    following[i],
-                    avatar.getResourceId(i, -1))
-                listUser.add(user)
-            }
-            avatar.recycle()
-            return listUser
+        mainViewModel.users.observe(this) {
+            showRecyclerList(it)
         }
 
-    private fun showRecyclerList() {
+        mainViewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
+    }
+
+    private fun showRecyclerList(user: List<User>) {
+        var rvUser: RecyclerView = binding.rvUsers
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             rvUser.layoutManager = GridLayoutManager(this, 2)
         } else {
             rvUser.layoutManager = LinearLayoutManager(this)
         }
-        val listHeroAdapter = ListUserAdapter(list)
+        val listHeroAdapter = ListUserAdapter(user)
         rvUser.adapter = listHeroAdapter
 
         listHeroAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
@@ -89,5 +66,9 @@ class MainActivity : AppCompatActivity() {
         val moveWithObjectIntent = Intent(this@MainActivity, UserDetailActivity::class.java)
         moveWithObjectIntent.putExtra(UserDetailActivity.USER, user)
         startActivity(moveWithObjectIntent)
+    }
+
+    private fun showLoading(isLoading: Boolean){
+
     }
 }
