@@ -21,8 +21,7 @@ class MainViewModel: ViewModel() {
 
     fun searchUsers(username: String = "\"\"") {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().searchUser(username)
-        Log.e(TAG, "username $username")
+        val client = ApiConfig.getApiService().searchUser(username.ifEmpty { "\"\"" })
         client.enqueue(object : Callback<UserListResponse> {
             override fun onResponse(
                 call: Call<UserListResponse>,
