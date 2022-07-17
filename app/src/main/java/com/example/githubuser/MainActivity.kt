@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerList(user: List<User>) {
-        var rvUser: RecyclerView = binding.rvUsers
+        val rvUser: RecyclerView = binding.rvUsers
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             rvUser.layoutManager = GridLayoutManager(this, 2)
         } else {
@@ -47,7 +47,9 @@ class MainActivity : AppCompatActivity() {
 
         listHeroAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
-                showSelectedUser(data)
+                if (binding.progressBar.visibility == View.GONE) {
+                    showSelectedUser(data)
+                }
             }
         })
     }
