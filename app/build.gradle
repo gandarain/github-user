@@ -13,10 +13,12 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0.1"
-        buildConfigField "String", "TOKEN", '"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"'
-        buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        buildConfigField "String", "TOKEN", "\"${properties.getProperty("TOKEN")}\""
+        buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
     }
 
     buildTypes {
