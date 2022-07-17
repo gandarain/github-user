@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubuser.databinding.ItemRowUserBinding
 
-class ListUserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+class ListUserAdapter(private val listUser: List<User>) : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -18,8 +18,7 @@ class ListUserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adap
     class ListViewHolder(binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
         var imgPhoto: ImageView = binding.imgItemPhoto
         var tvName: TextView = binding.tvItemName
-        var tvCompany: TextView = binding.tvItemCompany
-        var tvUsername: TextView = binding.tvItemUsername
+        var tvItemScore: TextView = binding.tvItemScore
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -35,12 +34,11 @@ class ListUserAdapter(private val listUser: ArrayList<User>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val user: User = listUser[position]
         Glide.with(holder.itemView.context)
-            .load(user.avatar)
+            .load(user.avatarUrl)
             .circleCrop()
             .into(holder.imgPhoto)
-        holder.tvName.text = user.name
-        holder.tvCompany.text = user.company
-        holder.tvUsername.text = user.username
+        holder.tvName.text = user.login
+        holder.tvItemScore.text = user.score.toString()
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listUser[holder.adapterPosition]) }
     }
 

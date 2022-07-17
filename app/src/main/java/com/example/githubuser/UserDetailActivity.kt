@@ -19,30 +19,7 @@ class UserDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         user = intent.getParcelableExtra<User>(USER) as User
-
-        setupUserDetail()
         setupToolbar()
-    }
-
-    private fun setupUserDetail() {
-        val tvName: TextView = binding.cardUserInfo.tvName
-        val tvUsername: TextView = binding.cardUserInfo.tvUsername
-        val ivAvatar: ImageView = binding.cardUserInfo.ivAvatar
-        val tvCompany: TextView = binding.cardUserDetail.tvCompany
-        val tvRepository: TextView = binding.cardUserDetail.tvRepository
-        val tvFollower: TextView = binding.cardUserDetail.tvFollowers
-        val tvLocation: TextView = binding.cardUserDetail.tvLocation
-
-        tvUsername.text = user.username
-        tvName.text = user.name
-        tvCompany.text = user.company
-        tvRepository.text = StringBuilder().append(user.repository).append(" repository")
-        tvFollower.text = StringBuilder().append(user.followers).append(" followers").append("-").append(user.following).append(" following")
-        tvLocation.text = user.location
-        Glide.with(this)
-            .load(user.avatar)
-            .circleCrop()
-            .into(ivAvatar)
     }
 
     private fun setupToolbar() {
