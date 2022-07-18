@@ -9,4 +9,8 @@ interface ApiService {
     fun searchUser(
         @Query("q") username: String
     ): Call<UserListResponse>
+
+    @GET("users/{username}")
+    @Headers("Authorization: token ${BuildConfig.TOKEN}")
+    fun getUserDetail(@Path("username") username: String): Call<UserDetailResponse>
 }
