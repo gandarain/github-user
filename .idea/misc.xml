@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/splash_bg.xml" value="0.1405" />
         <entry key="app/src/main/res/layout-v31/activity_main.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20153061224489796" />
-        <entry key="app/src/main/res/layout/activity_user_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_user_detail.xml" value="0.165" />
         <entry key="app/src/main/res/layout/card_user_detail.xml" value="0.335" />
         <entry key="app/src/main/res/layout/card_user_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/empty_user.xml" value="0.14175724637681159" />

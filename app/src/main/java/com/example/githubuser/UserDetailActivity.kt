@@ -31,6 +31,10 @@ class UserDetailActivity : AppCompatActivity() {
         userDetailViewModel.userDetail.observe(this@UserDetailActivity){
             showUserDetail(it)
         }
+
+        userDetailViewModel.isError.observe(this@UserDetailActivity) {
+            showError(it)
+        }
     }
 
     private fun setupToolbar() {
@@ -71,6 +75,14 @@ class UserDetailActivity : AppCompatActivity() {
             .append(this@UserDetailActivity.getString(R.string.followers))
             .append(user.following.toString())
             .append(this@UserDetailActivity.getString(R.string.following))
+    }
+
+    private fun showError(isError: Boolean) {
+        if (isError) {
+            binding.error.clError.visibility = View.VISIBLE
+        } else {
+            binding.error.clError.visibility = View.GONE
+        }
     }
 
     companion object {

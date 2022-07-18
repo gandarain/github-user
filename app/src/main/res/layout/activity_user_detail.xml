@@ -27,4 +27,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
+    <include
+        android:id="@+id/error"
+        layout="@layout/error"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
