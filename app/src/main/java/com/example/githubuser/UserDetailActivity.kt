@@ -3,14 +3,15 @@ package com.example.githubuser
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.View
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.githubuser.databinding.ActivityUserDetailBinding
 
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
-    private lateinit var user: User
+    private lateinit var username: String
+    private val userDetailViewModel by viewModels<UserDetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +19,18 @@ class UserDetailActivity : AppCompatActivity() {
         binding = ActivityUserDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        user = intent.getParcelableExtra<User>(USER) as User
         setupToolbar()
+
+        username = intent.getStringExtra(USERNAME).toString()
+        userDetailViewModel.getUserDetail(username)
+
+        userDetailViewModel.isLoading.observe(this@UserDetailActivity){
+            showLoading(it)
+        }
+
+        userDetailViewModel.userDetail.observe(this@UserDetailActivity){
+            showUserDetail(it)
+        }
     }
 
     private fun setupToolbar() {
@@ -35,7 +46,34 @@ class UserDetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun showLoading(isLoading: Boolean){
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.userDetail.clUserDetail.visibility = View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.userDetail.clUserDetail.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showUserDetail(user: UserDetailResponse) {
+        Glide.with(this@UserDetailActivity)
+            .load(user.avatarUrl)
+            .circleCrop()
+            .into(binding.userDetail.cardUserInfo.ivAvatar)
+        binding.userDetail.cardUserInfo.tvName.text = user.name
+        binding.userDetail.cardUserInfo.tvUsername.text = user.login
+        binding.userDetail.cardUserDetail.tvCompany.text = user.company
+        binding.userDetail.cardUserDetail.tvLocation.text = user.location
+        binding.userDetail.cardUserDetail.tvRepository.text = StringBuilder().append(user.publicRepos.toString())
+            .append(this@UserDetailActivity.getString(R.string.repositories))
+        binding.userDetail.cardUserDetail.tvFollowers.text = StringBuilder().append(user.followers.toString())
+            .append(this@UserDetailActivity.getString(R.string.followers))
+            .append(user.following.toString())
+            .append(this@UserDetailActivity.getString(R.string.following))
+    }
+
     companion object {
-        const val USER = "user"
+        const val USERNAME = "username"
     }
 }

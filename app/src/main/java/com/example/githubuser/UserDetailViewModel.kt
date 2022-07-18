@@ -7,9 +7,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel: ViewModel() {
-    private val _users = MutableLiveData<List<User>>()
-    val users: LiveData<List<User>> = _users
+class UserDetailViewModel: ViewModel() {
+    private val _userDetail = MutableLiveData<UserDetailResponse>()
+    val userDetail: LiveData<UserDetailResponse> = _userDetail
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -17,35 +17,27 @@ class MainViewModel: ViewModel() {
     private val _isError = MutableLiveData<Boolean>()
     val isError: LiveData<Boolean> = _isError
 
-    init {
-        searchUsers()
-    }
-
-    fun searchUsers(username: String = EMPTY_USERNAME) {
+    fun getUserDetail(username: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().searchUser(username.ifEmpty { EMPTY_USERNAME })
-        client.enqueue(object : Callback<UserListResponse> {
+        val client = ApiConfig.getApiService().getUserDetail(username)
+        client.enqueue(object : Callback<UserDetailResponse> {
             override fun onResponse(
-                call: Call<UserListResponse>,
-                response: Response<UserListResponse>
+                call: Call<UserDetailResponse>,
+                response: Response<UserDetailResponse>
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _isError.value = false
-                    _users.value = response.body()?.items
+                    _userDetail.value = response.body()
                 } else {
                     _isError.value = true
                 }
             }
 
-            override fun onFailure(call: Call<UserListResponse>, t: Throwable) {
+            override fun onFailure(call: Call<UserDetailResponse>, t: Throwable) {
                 _isLoading.value = false
                 _isError.value = true
             }
         })
-    }
-
-    companion object {
-        private const val EMPTY_USERNAME = "\"\""
     }
 }

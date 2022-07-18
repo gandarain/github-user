@@ -24,15 +24,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mainViewModel.users.observe(this) {
+        mainViewModel.users.observe(this@MainActivity) {
             showListUser(it)
         }
 
-        mainViewModel.isLoading.observe(this) {
+        mainViewModel.isLoading.observe(this@MainActivity) {
             showLoading(it)
         }
 
-        mainViewModel.isError.observe(this) {
+        mainViewModel.isError.observe(this@MainActivity) {
             if (it == true) {
                 showError(it)
             }
@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity() {
         handlingEmptyUser(isEmptyUser)
 
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            rvUser.layoutManager = GridLayoutManager(this, 2)
+            rvUser.layoutManager = GridLayoutManager(this@MainActivity, 2)
         } else {
-            rvUser.layoutManager = LinearLayoutManager(this)
+            rvUser.layoutManager = LinearLayoutManager(this@MainActivity)
         }
         val listHeroAdapter = ListUserAdapter(user)
         rvUser.adapter = listHeroAdapter
@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSelectedUser(user: User) {
-        val moveWithObjectIntent = Intent(this@MainActivity, UserDetailActivity::class.java)
-        moveWithObjectIntent.putExtra(UserDetailActivity.USER, user)
-        startActivity(moveWithObjectIntent)
+        val intent = Intent(this@MainActivity, UserDetailActivity::class.java)
+        intent.putExtra(UserDetailActivity.USERNAME, user.login)
+        startActivity(intent)
     }
 
     private fun showLoading(isLoading: Boolean){
