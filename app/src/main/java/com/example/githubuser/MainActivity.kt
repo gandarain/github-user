@@ -25,18 +25,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         mainViewModel.users.observe(this) {
-            showRecyclerList(it)
+            showListUser(it)
         }
 
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
+        mainViewModel.isError.observe(this) {
+            if (it == true) {
+                showError()
+            }
+        }
+
         searchInputHandler()
     }
 
-    private fun showRecyclerList(user: List<User>) {
+    private fun showListUser(user: List<User>) {
         val rvUser: RecyclerView = binding.rvUsers
+        val isEmptyUser = user.isEmpty()
+
+        handlingEmptyUser(isEmptyUser)
+
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             rvUser.layoutManager = GridLayoutManager(this, 2)
         } else {
@@ -52,6 +62,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun handlingEmptyUser(isEmptyUser: Boolean) {
+        if (isEmptyUser) {
+            binding.emptyUser.clEmptyUser.visibility = View.VISIBLE
+        } else {
+            binding.emptyUser.clEmptyUser.visibility = View.GONE
+        }
     }
 
     private fun showSelectedUser(user: User) {
@@ -79,5 +97,9 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
+    }
+
+    private fun showError() {
+
     }
 }
