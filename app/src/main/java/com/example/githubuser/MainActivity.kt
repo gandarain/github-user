@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.isError.observe(this) {
             if (it == true) {
-                showError()
+                showError(it)
             }
         }
 
@@ -99,7 +99,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showError() {
-
+    private fun showError(isError: Boolean) {
+        if (isError) {
+            binding.error.clError.visibility = View.VISIBLE
+        } else {
+            binding.error.clError.visibility = View.GONE
+        }
     }
 }

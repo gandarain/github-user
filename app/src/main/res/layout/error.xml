@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/clEmptyUser">
+    android:id="@+id/clError">
 
     <ImageView
         android:id="@+id/ivEmptyUser"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/user_not_found"
+        android:src="@drawable/error"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/tvEmptyUser"
-        android:text="@string/empty_user"
+        android:text="@string/error_message"
         style="@style/TvError"
         app:layout_constraintTop_toBottomOf="@+id/ivEmptyUser"
         app:layout_constraintStart_toStartOf="parent"/>

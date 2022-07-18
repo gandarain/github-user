@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchInput"
-        tools:listitem="@layout/item_row_user"/>
+        tools:listitem="@layout/item_row_user" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -38,6 +38,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <include
+        android:id="@+id/emptyUser"
+        layout="@layout/empty_user"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <include
+        android:id="@+id/error"
+        layout="@layout/error"
+        android:visibility="gone"
         tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

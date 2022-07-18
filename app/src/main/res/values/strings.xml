@@ -3,6 +3,8 @@
     <string name="user_image">user image</string>
     <string name="title_detail_user">User Detail</string>
     <string name="search_user">Username</string>
+    <string name="error_message">Terjadi kesalahan pada server kami</string>
+    <string name="empty_user">User tidak ditemukan</string>
 
     <string-array name="username">
         <item>JakeWharton</item>
