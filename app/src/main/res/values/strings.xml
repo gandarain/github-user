@@ -5,6 +5,9 @@
     <string name="search_user">Username</string>
     <string name="error_message">Terjadi kesalahan pada server kami</string>
     <string name="empty_user">User tidak ditemukan</string>
+    <string name="repositories">\u0020Repositories</string>
+    <string name="followers">\u0020Followers\u0020-\u0020</string>
+    <string name="following">\u0020Following</string>
 
     <string-array name="username">
         <item>JakeWharton</item>
