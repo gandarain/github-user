@@ -36,7 +36,7 @@
             tools:text="Full Name"/>
 
         <TextView
-            android:id="@+id/tv_item_score"
+            android:id="@+id/tv_item_type"
             style="@style/TvUsername"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"
             card_view:layout_constraintEnd_toEndOf="parent"
