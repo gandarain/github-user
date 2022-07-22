@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.githubuser.databinding.ActivityUserDetailBinding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
@@ -35,6 +38,15 @@ class UserDetailActivity : AppCompatActivity() {
         userDetailViewModel.isError.observe(this@UserDetailActivity) {
             showError(it)
         }
+
+        val sectionsPagerAdapter = SectionsPagerAdapter(this@UserDetailActivity)
+        val viewPager: ViewPager2 = binding.viewPager
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = binding.tabs
+        TabLayoutMediator(tabs, viewPager) {tab, position ->
+            tab.text = resources.getString(TAB_TITLES[position])
+        }.attach()
+        supportActionBar?.elevation = 0f
     }
 
     private fun setupToolbar() {
@@ -87,5 +99,9 @@ class UserDetailActivity : AppCompatActivity() {
 
     companion object {
         const val USERNAME = "username"
+        private val TAB_TITLES = intArrayOf(
+            R.string.tab_text_1,
+            R.string.tab_text_2
+        )
     }
 }
