@@ -112,4 +112,7 @@
         <item>@drawable/user9</item>
         <item>@drawable/user10</item>
     </string-array>
+
+    <string name="tab_text_1">Follower</string>
+    <string name="tab_text_2">Following</string>
 </resources>
