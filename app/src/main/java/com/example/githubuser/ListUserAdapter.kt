@@ -18,7 +18,7 @@ class ListUserAdapter(private val listUser: List<User>) : RecyclerView.Adapter<L
     class ListViewHolder(binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
         var imgPhoto: ImageView = binding.imgItemPhoto
         var tvName: TextView = binding.tvItemName
-        var tvItemScore: TextView = binding.tvItemScore
+        var tvType: TextView = binding.tvItemType
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -38,7 +38,7 @@ class ListUserAdapter(private val listUser: List<User>) : RecyclerView.Adapter<L
             .circleCrop()
             .into(holder.imgPhoto)
         holder.tvName.text = user.login
-        holder.tvItemScore.text = user.score.toString()
+        holder.tvType.text = user.type
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listUser[holder.adapterPosition]) }
     }
 
