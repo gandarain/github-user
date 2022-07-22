@@ -66,9 +66,13 @@ class UserDetailActivity : AppCompatActivity() {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
             binding.userDetail.clUserDetail.visibility = View.GONE
+            binding.tabs.visibility = View.GONE
+            binding.viewPager.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
             binding.userDetail.clUserDetail.visibility = View.VISIBLE
+            binding.tabs.visibility = View.VISIBLE
+            binding.viewPager.visibility = View.VISIBLE
         }
     }
 

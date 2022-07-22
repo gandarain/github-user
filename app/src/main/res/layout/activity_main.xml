@@ -44,12 +44,12 @@
         android:id="@+id/emptyUser"
         layout="@layout/empty_user"
         android:visibility="gone"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <include
         android:id="@+id/error"
         layout="@layout/error"
         android:visibility="gone"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
