@@ -29,4 +29,16 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_row_user" />
 
+    <include
+        android:id="@+id/emptyUser"
+        layout="@layout/empty_user"
+        android:visibility="gone"
+        tools:visibility="gone" />
+
+    <include
+        android:id="@+id/error"
+        layout="@layout/error"
+        android:visibility="gone"
+        tools:visibility="gone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

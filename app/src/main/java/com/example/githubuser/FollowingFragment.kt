@@ -38,10 +38,19 @@ class FollowingFragment : Fragment() {
         followingViewModel.following.observe(requireActivity()){
             showListFollower(it)
         }
+
+        followingViewModel.isError.observe(requireActivity()) {
+            if (it == true) {
+                showError(it)
+            }
+        }
     }
 
     private fun showListFollower(user: List<User>) {
         val rvUser: RecyclerView = binding.rvFollowing
+        val isEmptyUser = user.isEmpty()
+
+        handlingEmptyUser(isEmptyUser)
         rvUser.layoutManager = LinearLayoutManager(requireActivity())
         val listHeroAdapter = ListUserAdapter(user)
         rvUser.adapter = listHeroAdapter
@@ -66,6 +75,22 @@ class FollowingFragment : Fragment() {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    private fun handlingEmptyUser(isEmptyUser: Boolean) {
+        if (isEmptyUser) {
+            binding.emptyUser.clEmptyUser.visibility = View.VISIBLE
+        } else {
+            binding.emptyUser.clEmptyUser.visibility = View.GONE
+        }
+    }
+
+    private fun showError(isError: Boolean) {
+        if (isError) {
+            binding.error.clError.visibility = View.VISIBLE
+        } else {
+            binding.error.clError.visibility = View.GONE
         }
     }
 }
