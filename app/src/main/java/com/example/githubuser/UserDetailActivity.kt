@@ -78,6 +78,10 @@ class UserDetailActivity : AppCompatActivity() {
                 startActivity(shareIntent)
                 return true
             }
+            android.R.id.home -> {
+                finish()
+                return true
+            }
             else -> return true
         }
     }
