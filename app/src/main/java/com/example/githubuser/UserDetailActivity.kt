@@ -1,7 +1,9 @@
 package com.example.githubuser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
@@ -39,6 +41,10 @@ class UserDetailActivity : AppCompatActivity() {
             showError(it)
         }
 
+        tabLayoutHandler()
+    }
+
+    private fun tabLayoutHandler() {
         val sectionsPagerAdapter = SectionsPagerAdapter(this@UserDetailActivity)
         val viewPager: ViewPager2 = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
@@ -46,7 +52,13 @@ class UserDetailActivity : AppCompatActivity() {
         TabLayoutMediator(tabs, viewPager) {tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
-        supportActionBar?.elevation = 0f
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.option_menu_user_detail, menu)
+
+        return true
     }
 
     private fun setupToolbar() {
@@ -55,11 +67,19 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == android.R.id.home) {
-            finish()
+        when (item.itemId) {
+            R.id.shareButton -> {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "Github User : \n${userDetailViewModel.userDetail.value?.htmlUrl} ")
+                    type = "text/html"
+                }
+                val shareIntent = Intent.createChooser(sendIntent, "Github User")
+                startActivity(shareIntent)
+                return true
+            }
+            else -> return true
         }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun showLoading(isLoading: Boolean){
@@ -68,11 +88,13 @@ class UserDetailActivity : AppCompatActivity() {
             binding.userDetail.clUserDetail.visibility = View.GONE
             binding.tabs.visibility = View.GONE
             binding.viewPager.visibility = View.GONE
+            binding.viewDivider.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
             binding.userDetail.clUserDetail.visibility = View.VISIBLE
             binding.tabs.visibility = View.VISIBLE
             binding.viewPager.visibility = View.VISIBLE
+            binding.viewDivider.visibility = View.VISIBLE
         }
     }
 
@@ -96,8 +118,16 @@ class UserDetailActivity : AppCompatActivity() {
     private fun showError(isError: Boolean) {
         if (isError) {
             binding.error.clError.visibility = View.VISIBLE
+            binding.userDetail.clUserDetail.visibility = View.GONE
+            binding.tabs.visibility = View.GONE
+            binding.viewPager.visibility = View.GONE
+            binding.viewDivider.visibility = View.GONE
         } else {
             binding.error.clError.visibility = View.GONE
+            binding.userDetail.clUserDetail.visibility = View.VISIBLE
+            binding.tabs.visibility = View.VISIBLE
+            binding.viewPager.visibility = View.VISIBLE
+            binding.viewDivider.visibility = View.VISIBLE
         }
     }
 
