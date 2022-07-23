@@ -2,7 +2,6 @@ package com.example.githubuser
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,11 +38,19 @@ class FollowerFragment : Fragment() {
         followerViewModel.followers.observe(requireActivity()){
             showListFollower(it)
         }
+
+        followerViewModel.isError.observe(requireActivity()) {
+            if (it == true) {
+                showError(it)
+            }
+        }
     }
 
     private fun showListFollower(user: List<User>) {
-        Log.e("follower ", user.toString())
         val rvUser: RecyclerView = binding.rvFollowers
+        val isEmptyUser = user.isEmpty()
+
+        handlingEmptyUser(isEmptyUser)
         rvUser.layoutManager = LinearLayoutManager(requireActivity())
         val listHeroAdapter = ListUserAdapter(user)
         rvUser.adapter = listHeroAdapter
@@ -68,6 +75,22 @@ class FollowerFragment : Fragment() {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    private fun handlingEmptyUser(isEmptyUser: Boolean) {
+        if (isEmptyUser) {
+            binding.emptyUser.clEmptyUser.visibility = View.VISIBLE
+        } else {
+            binding.emptyUser.clEmptyUser.visibility = View.GONE
+        }
+    }
+
+    private fun showError(isError: Boolean) {
+        if (isError) {
+            binding.error.clError.visibility = View.VISIBLE
+        } else {
+            binding.error.clError.visibility = View.GONE
         }
     }
 }

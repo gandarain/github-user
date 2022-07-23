@@ -1,14 +1,15 @@
 package com.example.githubuser
 
+import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
+import android.view.Menu
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,8 +38,34 @@ class MainActivity : AppCompatActivity() {
                 showError(it)
             }
         }
+    }
 
-        searchInputHandler()
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.option_menu, menu)
+
+        searchViewHandler(menu)
+
+        return true
+    }
+
+    private fun searchViewHandler(menu: Menu) {
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menu.findItem(R.id.search).actionView as SearchView
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        searchView.queryHint = resources.getString(R.string.search_user)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                mainViewModel.searchUsers(query)
+                searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
     }
 
     private fun showListUser(user: List<User>) {
@@ -83,19 +110,6 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
-        }
-    }
-
-    private fun searchInputHandler() {
-        binding.searchInput.edReview.setOnKeyListener { v, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                val username = binding.searchInput.edReview.text.toString()
-                mainViewModel.searchUsers(username)
-                binding.searchInput.edReview.clearFocus()
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
-            }
-            false
         }
     }
 

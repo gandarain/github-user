@@ -34,5 +34,8 @@ data class UserDetailResponse(
 	val login: String,
 
 	@field:SerializedName("email")
-	val email: String
+	val email: String,
+
+	@field:SerializedName("html_url")
+	val htmlUrl: String
 ): Parcelable
