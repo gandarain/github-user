@@ -7,3 +7,9 @@
 ### Submission 2
 
 ![submission-2](https://user-images.githubusercontent.com/27923352/180629036-434badc5-d153-4f8f-b99a-7e936a34922f.gif)
+
+## APK
+https://drive.google.com/file/d/1LPY0VZ7EgxytQoy-0hmYwIpumFlZVyN9/view?usp=sharing
+
+## MAD Scorecard
+![summary](https://user-images.githubusercontent.com/27923352/180629207-1c5dea47-7313-4d0f-8498-675567b3470c.png)
