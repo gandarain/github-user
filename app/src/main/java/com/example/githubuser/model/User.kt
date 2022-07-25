@@ -1,7 +1,7 @@
 package com.example.githubuser.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import com.google.gson.annotations.SerializedName
 
 @Parcelize
