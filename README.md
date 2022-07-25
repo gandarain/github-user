@@ -1,4 +1,5 @@
 # Github User
+Github user app with Github API https://docs.github.com/en/rest.
 
 ### Submission 1
 
@@ -7,6 +8,16 @@
 ### Submission 2
 
 ![submission-2](https://user-images.githubusercontent.com/27923352/180629036-434badc5-d153-4f8f-b99a-7e936a34922f.gif)
+
+## Current Features
+- Search Github User.
+- Github User Detail.
+- List Followers & Following.
+- Share Github User Link.
+
+## Next Features
+- Add Github User to Favorites.
+- List Favorites Github User.
 
 ## APK
 https://drive.google.com/file/d/1LPY0VZ7EgxytQoy-0hmYwIpumFlZVyN9/view?usp=sharing
