@@ -10,7 +10,8 @@ Github user app with Github API https://docs.github.com/en/rest.
 ![submission-2](https://user-images.githubusercontent.com/27923352/180629036-434badc5-d153-4f8f-b99a-7e936a34922f.gif)
 
 ## Current Features
-- Search Github User.
+- Github User List
+- Search Github User based on username.
 - Github User Detail.
 - List Followers & Following.
 - Share Github User Link.
