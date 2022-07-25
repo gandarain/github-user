@@ -11,4 +11,6 @@
     <string name="tab_text_1">Follower</string>
     <string name="tab_text_2">Following</string>
     <string name="share">Share</string>
+    <string name="image_empty_user">image_empty_user</string>
+    <string name="image_error">image_error</string>
 </resources>

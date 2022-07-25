@@ -1,4 +1,4 @@
-package com.example.githubuser
+package com.example.githubuser.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -17,9 +17,6 @@ data class UserDetailResponse(
 
 	@field:SerializedName("name")
 	val name: String,
-
-	@field:SerializedName("bio")
-	val bio: String,
 
 	@field:SerializedName("company")
 	val company: String,

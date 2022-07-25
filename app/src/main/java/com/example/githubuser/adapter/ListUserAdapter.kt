@@ -1,4 +1,4 @@
-package com.example.githubuser
+package com.example.githubuser.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubuser.databinding.ItemRowUserBinding
+import com.example.githubuser.model.User
 
 class ListUserAdapter(private val listUser: List<User>) : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback

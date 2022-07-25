@@ -6,6 +6,7 @@
     android:id="@+id/clEmptyUser">
 
     <ImageView
+        android:contentDescription="@string/image_empty_user"
         android:id="@+id/ivEmptyUser"
         android:layout_width="200dp"
         android:layout_height="200dp"

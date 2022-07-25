@@ -1,4 +1,4 @@
-package com.example.githubuser
+package com.example.githubuser.ui.main
 
 import android.app.SearchManager
 import android.content.Context
@@ -13,7 +13,11 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubuser.R
+import com.example.githubuser.adapter.ListUserAdapter
 import com.example.githubuser.databinding.ActivityMainBinding
+import com.example.githubuser.model.User
+import com.example.githubuser.ui.detail.UserDetailActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

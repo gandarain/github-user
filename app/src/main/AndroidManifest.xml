@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUser">
         <activity
-            android:name=".UserDetailActivity"
+            android:name=".ui.detail.UserDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

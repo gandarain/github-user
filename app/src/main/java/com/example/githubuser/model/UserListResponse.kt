@@ -1,5 +1,6 @@
-package com.example.githubuser
+package com.example.githubuser.model
 
+import com.example.githubuser.model.User
 import com.google.gson.annotations.SerializedName
 
 data class UserListResponse(
