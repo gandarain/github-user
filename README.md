@@ -15,6 +15,7 @@ Github user app with Github API https://docs.github.com/en/rest.
 - Github User Detail.
 - List Followers & Following.
 - Share Github User Link.
+- Dark Mode.
 
 ## Next Features
 - Add Github User to Favorites.
