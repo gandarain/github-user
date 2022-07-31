@@ -67,11 +67,12 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_marginTop">20dp</item>
     </style>
-    <style name="TabLayout" parent="Widget.Design.TabLayout">
+    <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/white</item>
+        <item name="backgroundColor">@color/white</item>
         <item name="tabTextColor">@color/black</item>
         <item name="tabSelectedTextColor">@color/primaryColor</item>
+        <item name="tabIndicatorColor">@color/primaryColor</item>
     </style>
 </resources>

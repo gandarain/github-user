@@ -70,8 +70,9 @@
     <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/black</item>
+        <item name="backgroundColor">@color/black</item>
         <item name="tabTextColor">@color/white</item>
         <item name="tabSelectedTextColor">@color/primaryColor</item>
+        <item name="tabIndicatorColor">@color/primaryColor</item>
     </style>
 </resources>
