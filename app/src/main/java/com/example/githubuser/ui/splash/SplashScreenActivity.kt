@@ -13,7 +13,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.githubuser.preference.SettingPreferences
 import com.example.githubuser.ui.main.MainActivity
-import com.example.githubuser.ui.setting.SettingViewModel
+import com.example.githubuser.viewModel.SettingViewModel
 import com.example.githubuser.viewModel.SettingViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
