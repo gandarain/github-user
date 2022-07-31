@@ -42,11 +42,8 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@color/primaryColor"
+        style="@style/TabLayout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewDivider"
         android:visibility="gone"/>
 
