@@ -1,4 +1,4 @@
-package com.example.githubuser
+package com.example.githubuser.ui.splash
 
 import android.content.Context
 import android.content.Intent
