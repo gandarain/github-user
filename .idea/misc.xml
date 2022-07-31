@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/splash_bg.xml" value="0.1405" />
         <entry key="app/src/main/res/layout-v31/activity_main.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20153061224489796" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.16495726495726495" />
         <entry key="app/src/main/res/layout/activity_user_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/card_user_detail.xml" value="0.335" />
         <entry key="app/src/main/res/layout/card_user_info.xml" value="0.335" />
@@ -21,7 +22,7 @@
         <entry key="app/src/main/res/layout/item_row_user.xml" value="0.45" />
         <entry key="app/src/main/res/layout/search_input.xml" value="0.335" />
         <entry key="app/src/main/res/layout/user_detail.xml" value="0.335" />
-        <entry key="app/src/main/res/menu/option_menu.xml" value="0.16495726495726495" />
+        <entry key="app/src/main/res/menu/option_menu.xml" value="0.25" />
         <entry key="app/src/main/res/menu/option_menu_user_detail.xml" value="0.16495726495726495" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>

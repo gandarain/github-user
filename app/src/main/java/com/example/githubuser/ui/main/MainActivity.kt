@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
@@ -18,6 +19,7 @@ import com.example.githubuser.adapter.ListUserAdapter
 import com.example.githubuser.databinding.ActivityMainBinding
 import com.example.githubuser.model.User
 import com.example.githubuser.ui.detail.UserDetailActivity
+import com.example.githubuser.ui.setting.SettingActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -122,6 +124,17 @@ class MainActivity : AppCompatActivity() {
             binding.error.clError.visibility = View.VISIBLE
         } else {
             binding.error.clError.visibility = View.GONE
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.settingButton -> {
+                val intent = Intent(this@MainActivity, SettingActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            else -> return true
         }
     }
 }

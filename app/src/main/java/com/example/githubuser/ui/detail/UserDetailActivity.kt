@@ -13,6 +13,7 @@ import com.example.githubuser.R
 import com.example.githubuser.adapter.SectionsPagerAdapter
 import com.example.githubuser.databinding.ActivityUserDetailBinding
 import com.example.githubuser.model.UserDetailResponse
+import com.example.githubuser.ui.setting.SettingActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -79,6 +80,11 @@ class UserDetailActivity : AppCompatActivity() {
                 }
                 val shareIntent = Intent.createChooser(sendIntent, "Github User")
                 startActivity(shareIntent)
+                return true
+            }
+            R.id.settingButton -> {
+                val intent = Intent(this@UserDetailActivity, SettingActivity::class.java)
+                startActivity(intent)
                 return true
             }
             android.R.id.home -> {

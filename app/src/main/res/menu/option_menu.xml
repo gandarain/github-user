@@ -7,4 +7,10 @@
         android:title="@string/search_user"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|always" />
+    <group android:menuCategory="container">
+        <item android:id="@+id/settingButton"
+            android:title="@string/setting"
+            android:icon = "@drawable/ic_baseline_settings_24"
+            app:showAsAction="ifRoom" />
+    </group>
 </menu>

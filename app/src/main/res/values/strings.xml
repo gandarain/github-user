@@ -13,4 +13,7 @@
     <string name="share">Share</string>
     <string name="image_empty_user">image_empty_user</string>
     <string name="image_error">image_error</string>
+    <string name="setting">Setting</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="title_setting">Setting</string>
 </resources>
