@@ -1,4 +1,4 @@
-package com.example.githubuser.ui.setting
+package com.example.githubuser.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
