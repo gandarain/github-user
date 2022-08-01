@@ -3,7 +3,6 @@ package com.example.githubuser.ui.detail
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -41,13 +40,14 @@ class UserDetailActivity : AppCompatActivity() {
 
         userDetailViewModel.getUserDetail(username)
 
-        userDetailViewModel.getFavoriteUserByLoginId(username).observe(this) { favoriteUserList ->
-            if (favoriteUserList != null) {
+        userDetailViewModel.getFavoriteUserByLoginId(username).observe(this) {
+            if (it != null) {
+                favoriteUser = it
                 binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_24))
             } else {
                 binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_border_24))
             }
-            findUserByLoginId = favoriteUserList
+            findUserByLoginId = it
         }
 
         userDetailViewModel.isLoading.observe(this@UserDetailActivity){
@@ -68,11 +68,10 @@ class UserDetailActivity : AppCompatActivity() {
 
     private fun buttonFavoriteHandler(user: UserDetailResponse, userDetailViewModel: UserDetailViewModel) {
         binding.favoriteFloatingButton.setOnClickListener {
-            favoriteUser = FavoriteUser(avatarUrl = user.avatarUrl, name = user.name, login = user.login, email = user.email)
             if (findUserByLoginId == null) {
+                favoriteUser = FavoriteUser(avatarUrl = user.avatarUrl, name = user.name, login = user.login, email = user.email)
                 userDetailViewModel.insert(favoriteUser as FavoriteUser)
             } else {
-                Log.e("delete", favoriteUser.toString())
                 userDetailViewModel.delete(favoriteUser as FavoriteUser)
             }
         }
