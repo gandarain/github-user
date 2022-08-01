@@ -16,13 +16,11 @@ Github user app with Github API https://docs.github.com/en/rest.
 - List Followers & Following.
 - Share Github User Link.
 - Dark Mode.
-
-## Next Features
-- Add Github User to Favorites.
+- Add and Remove Github User to Favorites.
 - List Favorites Github User.
 
 ## APK
-https://drive.google.com/file/d/1LPY0VZ7EgxytQoy-0hmYwIpumFlZVyN9/view?usp=sharing
+https://drive.google.com/file/d/1x-UPNXmhrqThj_Z2iqUwn-2nlvNa2xh_/view?usp=sharing
 
 ## MAD Scorecard
 ![summary](https://user-images.githubusercontent.com/27923352/180629207-1c5dea47-7313-4d0f-8498-675567b3470c.png)
