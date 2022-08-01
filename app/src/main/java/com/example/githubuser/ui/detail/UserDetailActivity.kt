@@ -16,6 +16,7 @@ import com.example.githubuser.databinding.ActivityUserDetailBinding
 import com.example.githubuser.model.UserDetailResponse
 import com.example.githubuser.ui.setting.SettingActivity
 import com.example.githubuser.viewModel.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -45,6 +46,7 @@ class UserDetailActivity : AppCompatActivity() {
                 favoriteUser = it
                 binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_24))
             } else {
+                favoriteUser = FavoriteUser()
                 binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_border_24))
             }
             findUserByLoginId = it
@@ -71,10 +73,17 @@ class UserDetailActivity : AppCompatActivity() {
             if (findUserByLoginId == null) {
                 favoriteUser = FavoriteUser(avatarUrl = user.avatarUrl, name = user.name, login = user.login, email = user.email)
                 userDetailViewModel.insert(favoriteUser as FavoriteUser)
+                showSnackBar("User berhasil ditambahkan ke favorite!", it)
             } else {
                 userDetailViewModel.delete(favoriteUser as FavoriteUser)
+                showSnackBar("User berhasil dihapus dari favorite!", it)
             }
         }
+    }
+
+    private fun showSnackBar(message: String, view: View) {
+        val snack = Snackbar.make(view,message,Snackbar.LENGTH_SHORT)
+        snack.show()
     }
 
     private fun tabLayoutHandler() {

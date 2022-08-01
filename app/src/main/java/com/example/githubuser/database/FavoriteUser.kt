@@ -14,14 +14,14 @@ data class FavoriteUser(
     var id: Int = 0,
 
     @ColumnInfo(name = "avatarUrl")
-    var avatarUrl: String = "",
+    var avatarUrl: String? = null,
 
     @ColumnInfo(name = "name")
-    var name: String = "",
+    var name: String? = null,
 
     @ColumnInfo(name = "login")
-    var login: String = "",
+    var login: String? = null,
 
     @ColumnInfo(name = "email")
-    var email: String = ""
+    var email: String? = null
 ) : Parcelable
