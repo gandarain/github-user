@@ -45,6 +45,7 @@ class UserDetailActivity : AppCompatActivity() {
                 favoriteUser = it
                 binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_24))
             } else {
+                favoriteUser = FavoriteUser()
                 binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_border_24))
             }
             findUserByLoginId = it
