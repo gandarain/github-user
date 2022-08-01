@@ -19,6 +19,7 @@ import com.example.githubuser.adapter.ListUserAdapter
 import com.example.githubuser.databinding.ActivityMainBinding
 import com.example.githubuser.model.User
 import com.example.githubuser.ui.detail.UserDetailActivity
+import com.example.githubuser.ui.favorites.FavoritesActivity
 import com.example.githubuser.ui.setting.SettingActivity
 
 class MainActivity : AppCompatActivity() {
@@ -128,13 +129,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.settingButton -> {
                 val intent = Intent(this@MainActivity, SettingActivity::class.java)
                 startActivity(intent)
-                return true
+                true
             }
-            else -> return true
+            R.id.favoriteButton -> {
+                val intent = Intent(this@MainActivity, FavoritesActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> true
         }
     }
 }
