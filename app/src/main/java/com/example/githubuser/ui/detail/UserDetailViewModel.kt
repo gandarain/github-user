@@ -1,15 +1,18 @@
 package com.example.githubuser.ui.detail
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.githubuser.api.ApiConfig
+import com.example.githubuser.database.FavoriteUser
 import com.example.githubuser.model.UserDetailResponse
+import com.example.githubuser.repository.FavoriteUserRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserDetailViewModel: ViewModel() {
+class UserDetailViewModel(application: Application): ViewModel() {
     private val _userDetail = MutableLiveData<UserDetailResponse>()
     val userDetail: LiveData<UserDetailResponse> = _userDetail
 
@@ -42,4 +45,16 @@ class UserDetailViewModel: ViewModel() {
             }
         })
     }
+
+    private val mFavoriteUserRepository: FavoriteUserRepository = FavoriteUserRepository(application)
+
+    fun insert(favoriteUser: FavoriteUser) {
+        mFavoriteUserRepository.insert(favoriteUser)
+    }
+
+    fun delete(favoriteUser: FavoriteUser) {
+        mFavoriteUserRepository.delete(favoriteUser)
+    }
+
+    fun getFavoriteUserByLoginId(login: String): LiveData<FavoriteUser> = mFavoriteUserRepository.getFavoriteUserByLoginId(login)
 }

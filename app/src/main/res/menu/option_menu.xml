@@ -12,5 +12,9 @@
             android:title="@string/setting"
             android:icon = "@drawable/ic_baseline_settings_24"
             app:showAsAction="ifRoom" />
+        <item android:id="@+id/favoriteButton"
+            android:title="@string/favorite"
+            android:icon = "@drawable/ic_baseline_favorite_24"
+            app:showAsAction="ifRoom" />
     </group>
 </menu>

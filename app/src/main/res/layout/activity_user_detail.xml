@@ -57,4 +57,19 @@
         app:layout_constraintTop_toBottomOf="@+id/tabs"
         android:visibility="gone"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        tools:src="@drawable/ic_baseline_favorite_border_24"
+        android:layout_margin="15dp"
+        app:fabSize="normal"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        android:backgroundTint="@color/primaryColor"
+        android:id="@+id/favoriteFloatingButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,21 +6,25 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.githubuser.R
 import com.example.githubuser.adapter.SectionsPagerAdapter
+import com.example.githubuser.database.FavoriteUser
 import com.example.githubuser.databinding.ActivityUserDetailBinding
 import com.example.githubuser.model.UserDetailResponse
 import com.example.githubuser.ui.setting.SettingActivity
+import com.example.githubuser.viewModel.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
     private lateinit var username: String
-    private val userDetailViewModel by viewModels<UserDetailViewModel>()
+    private var favoriteUser: FavoriteUser? = null
+    private lateinit var userDetailViewModel: UserDetailViewModel
+    private var findUserByLoginId: FavoriteUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +35,20 @@ class UserDetailActivity : AppCompatActivity() {
         setupToolbar()
 
         username = intent.getStringExtra(USERNAME).toString()
+
+        userDetailViewModel = obtainViewModel(this@UserDetailActivity)
+
         userDetailViewModel.getUserDetail(username)
+
+        userDetailViewModel.getFavoriteUserByLoginId(username).observe(this) {
+            if (it != null) {
+                favoriteUser = it
+                binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_24))
+            } else {
+                binding.favoriteFloatingButton.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_favorite_border_24))
+            }
+            findUserByLoginId = it
+        }
 
         userDetailViewModel.isLoading.observe(this@UserDetailActivity){
             showLoading(it)
@@ -39,6 +56,7 @@ class UserDetailActivity : AppCompatActivity() {
 
         userDetailViewModel.userDetail.observe(this@UserDetailActivity){
             showUserDetail(it)
+            buttonFavoriteHandler(it, userDetailViewModel)
         }
 
         userDetailViewModel.isError.observe(this@UserDetailActivity) {
@@ -46,6 +64,17 @@ class UserDetailActivity : AppCompatActivity() {
         }
 
         tabLayoutHandler()
+    }
+
+    private fun buttonFavoriteHandler(user: UserDetailResponse, userDetailViewModel: UserDetailViewModel) {
+        binding.favoriteFloatingButton.setOnClickListener {
+            if (findUserByLoginId == null) {
+                favoriteUser = FavoriteUser(avatarUrl = user.avatarUrl, name = user.name, login = user.login, email = user.email)
+                userDetailViewModel.insert(favoriteUser as FavoriteUser)
+            } else {
+                userDetailViewModel.delete(favoriteUser as FavoriteUser)
+            }
+        }
     }
 
     private fun tabLayoutHandler() {
@@ -102,12 +131,14 @@ class UserDetailActivity : AppCompatActivity() {
             binding.tabs.visibility = View.GONE
             binding.viewPager.visibility = View.GONE
             binding.viewDivider.visibility = View.GONE
+            binding.favoriteFloatingButton.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
             binding.userDetail.clUserDetail.visibility = View.VISIBLE
             binding.tabs.visibility = View.VISIBLE
             binding.viewPager.visibility = View.VISIBLE
             binding.viewDivider.visibility = View.VISIBLE
+            binding.favoriteFloatingButton.visibility = View.VISIBLE
         }
     }
 
@@ -142,6 +173,11 @@ class UserDetailActivity : AppCompatActivity() {
             binding.viewPager.visibility = View.VISIBLE
             binding.viewDivider.visibility = View.VISIBLE
         }
+    }
+
+    private fun obtainViewModel(activity: AppCompatActivity): UserDetailViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[UserDetailViewModel::class.java]
     }
 
     companion object {

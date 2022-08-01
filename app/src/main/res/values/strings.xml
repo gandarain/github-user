@@ -16,4 +16,6 @@
     <string name="setting">Setting</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="title_setting">Setting</string>
+    <string name="favorite">Favorite</string>
+    <string name="title_favorite_user">Favorite User</string>
 </resources>
