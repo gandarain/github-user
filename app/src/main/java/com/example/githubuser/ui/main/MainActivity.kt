@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun searchViewHandler(menu: Menu) {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search).actionView as SearchView
+        val searchView = menu.findItem(R.id.searchView).actionView as SearchView
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = resources.getString(R.string.search_user)
