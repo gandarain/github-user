@@ -9,6 +9,10 @@ Github user app with Github API https://docs.github.com/en/rest.
 
 ![submission-2](https://user-images.githubusercontent.com/27923352/180629036-434badc5-d153-4f8f-b99a-7e936a34922f.gif)
 
+### Submission 3
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/27923352/182321313-82c469c5-6d04-4242-b415-7dbd67bf19ef.gif)
+
 ## Current Features
 - Github User List
 - Search Github User based on username.
