@@ -1,7 +1,9 @@
 package com.example.githubuser.ui.favorites
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuser.R
 import com.example.githubuser.adapter.FavoriteUserAdapter
 import com.example.githubuser.databinding.ActivityFavoritesBinding
+import com.example.githubuser.ui.setting.SettingActivity
 import com.example.githubuser.viewModel.ViewModelFactory
 
 class FavoritesActivity : AppCompatActivity() {
@@ -54,6 +57,13 @@ class FavoritesActivity : AppCompatActivity() {
         return ViewModelProvider(activity, factory)[FavoritesViewModel::class.java]
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.option_menu_favorite_user, menu)
+
+        return true
+    }
+
     private fun setupToolbar() {
         title = resources.getString(R.string.title_favorite_user)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -61,6 +71,11 @@ class FavoritesActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.settingButton -> {
+                val intent = Intent(this@FavoritesActivity, SettingActivity::class.java)
+                startActivity(intent)
+                return true
+            }
             android.R.id.home -> {
                 finish()
                 true
