@@ -19,10 +19,8 @@ android {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
-        //buildConfigField "String", "TOKEN", "\"${properties.getProperty("TOKEN")}\""
+        buildConfigField "String", "TOKEN", "\"${properties.getProperty("TOKEN")}\""
         buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
-        buildConfigField 'String', "TOKEN", token
-        resValue 'string', "token", token
     }
 
     buildTypes {
