@@ -24,7 +24,7 @@ Github user app with Github API https://docs.github.com/en/rest.
 - List Favorites Github User.
 
 ## APK
-https://drive.google.com/file/d/1x-UPNXmhrqThj_Z2iqUwn-2nlvNa2xh_/view?usp=sharing
+https://github.com/gandarain/github-user/releases
 
 ## MAD Scorecard
 ![summary](https://user-images.githubusercontent.com/27923352/180629207-1c5dea47-7313-4d0f-8498-675567b3470c.png)
